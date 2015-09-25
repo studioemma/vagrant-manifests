@@ -1,0 +1,3 @@
+alias w='cd /var/www/website'
+alias rp='sudo service php5-fpm restart'
+alias ra='sudo service apache2 restart'
