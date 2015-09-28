@@ -11,14 +11,18 @@ apt-get install -y build-essential libsqlite3-dev ruby-dev
 
 gem install mailcatcher
 
-echo "sendmail_path = /usr/bin/env $(which catchmail)" \
-    >> /etc/php5/mods-available/mailcatcher.ini
-php5enmod mailcatcher
+if which php > /dev/null 2>&1; then
+    echo "sendmail_path = /usr/bin/env $(which catchmail)" \
+        >> /etc/php5/mods-available/mailcatcher.ini
+    php5enmod mailcatcher
+fi
 
 install -Dm644 files/mailcatcher.upstart.conf \
     /etc/init/mailcatcher.conf
 
-service php5-fpm restart
+if which php > /dev/null 2>&1; then
+    service php5-fpm restart
+fi
 service mailcatcher restart
 
 cd "$mailcatcher_calldir"
