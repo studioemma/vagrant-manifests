@@ -24,7 +24,7 @@ apt-get install -y vim htop curl git-core ant python-software-properties
 bash/install.sh
 apache2/install.sh
 php/install.sh
-mysql/install.sh
+mysql/install-5.6.sh
 grunt/install.sh
 mailcatcher/install.sh
 
