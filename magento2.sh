@@ -2,7 +2,11 @@
 basedir=$(dirname $(readlink -f $0))
 calldir=$(pwd)
 
-cd "$basedir"
+if [ "/tmp" = "$basedir" ]; then
+    cd /vagrant/manifests
+else
+    cd "$basedir"
+fi
 
 set -e
 
@@ -24,4 +28,6 @@ mysql/install.sh
 grunt/install.sh
 mailcatcher/install.sh
 
-cd "$calldir"
+if [ "/tmp" != "$basedir" ]; then
+    cd "$calldir"
+fi
