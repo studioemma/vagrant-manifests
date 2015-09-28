@@ -11,7 +11,9 @@ apt-get install -y \
     php5-cli php5-fpm php5-curl php5-gd php5-mcrypt php5-intl php5-json \
     php5-mcrypt php5-mysql php5-readline php5-xsl php5-xdebug php-pear php5-dev
 
-printf "xdebug.remote_enable = 1\nxdebug.remote_connect_back = 1" \
+echo -e "xdebug.remote_enable = 1\n"\
+    "xdebug.remote_connect_back = 1\n"\
+    "xdebug.max_nesting_level=400\n"\
     >> /etc/php5/mods-available/xdebug.ini
 
 install -Dm644 files/custom.ini /etc/php5/mods-available/custom.ini
