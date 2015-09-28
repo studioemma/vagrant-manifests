@@ -1,6 +1,8 @@
 #!/bin/sh
-
 apache_basedir=$(dirname $(readlink -f $0))
+apache_calldir=$(pwd)
+
+cd "$apache_basedir"
 
 set -e
 
@@ -30,3 +32,4 @@ cp files/website.conf /etc/apache2/sites-enabled/
 
 service apache2 restart
 
+cd "$apache_calldir"
