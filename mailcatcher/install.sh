@@ -15,7 +15,7 @@ install -Dm644 files/mailcatcher.upstart.conf \
     /etc/init/mailcatcher.conf
 
 if which php > /dev/null 2>&1; then
-    echo "sendmail_path = /usr/bin/env $(which catchmail)" \
+    echo "sendmail_path = /usr/bin/env $(which catchmail) -f magento2-devbox@studioemma.com --smtp-port 25" \
         >> /etc/php5/mods-available/mailcatcher.ini
     php5enmod mailcatcher
 
