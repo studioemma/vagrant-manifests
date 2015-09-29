@@ -8,6 +8,10 @@ set -e
 
 # magento2 specific stuff
 install -Dm644 files/cron.magento2 /etc/cron.d/magento2
-echo "env[MAGE_MODE] = developer" >> /etc/php5/fpm/pool.d/www.conf
+
+if which php > /dev/null 2>&1; then
+    echo "env[MAGE_MODE] = developer" >> /etc/php5/fpm/pool.d/www.conf
+    service php5-fpm restart
+fi
 
 cd "$magento_calldir"
