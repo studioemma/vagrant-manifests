@@ -12,5 +12,12 @@ apt-get update
 apt-get install -y nodejs
 
 npm install -g grunt-cli
+npm install -g underscore
+npm install -g node-minify
+npm install -g glob
+npm install -g time-grunt
+npm install -g load-grunt-config
+npm install -g imagemin-svgo
+npm install -g jit-grunt
 
 cd "$grunt_calldir"
