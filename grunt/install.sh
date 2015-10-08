@@ -19,5 +19,6 @@ npm install -g time-grunt
 npm install -g load-grunt-config
 npm install -g imagemin-svgo
 npm install -g jit-grunt
+npm install -g grunt-contrib-watch
 
 cd "$grunt_calldir"
