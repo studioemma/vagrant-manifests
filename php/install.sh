@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 php_basedir=$(dirname $(readlink -f $0))
 php_calldir=$(pwd)
 
