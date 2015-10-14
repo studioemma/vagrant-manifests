@@ -21,6 +21,7 @@ mysql/install-5.6.sh
 grunt/install.sh
 mailcatcher/install.sh
 magento/install.sh
+mountdependency/install.sh -m '/var/www/website' -s 'nginx' -s 'php5-fpm'
 
 if [ "/tmp" != "$basedir" ]; then
     cd "$calldir"
