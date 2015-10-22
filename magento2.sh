@@ -15,7 +15,7 @@ export DEBIAN_FRONTEND=noninteractive
 # install 'modules'
 init/install.sh
 bash/install.sh
-apache2/install.sh
+nginx/install.sh
 php/install.sh
 mysql/install-5.6.sh
 grunt/install.sh
