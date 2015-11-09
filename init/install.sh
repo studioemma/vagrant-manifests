@@ -16,4 +16,8 @@ dpkg-reconfigure --frontend noninteractive tzdata 2>&1
 # default packages
 apt-get install -y vim htop curl git-core ant python-software-properties
 
+# osx does not understand locale so dont accept their wrong LANG shit
+sed -e 's/\(.*AcceptEnv.*\)/# \1/' -i /etc/ssh/sshd_config
+service ssh restart
+
 cd "$init_calldir"
