@@ -5,7 +5,7 @@ if [[ "vagrant" == "$(whoami)" ]]; then
     ssh-keyscan -p7999 stash.studioemma.com >> "$HOME/.ssh/known_hosts"
 
     # instal global package config
-    echo 'globaltargetdir="/vagrant"' > "$HOME/.package"
+    echo 'globaltargetdir="/vagrant/packages"' > "$HOME/.package"
 
     mkdir -p "$HOME/.bin/tools"
     cd "$HOME/.bin/tools"
