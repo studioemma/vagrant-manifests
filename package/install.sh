@@ -8,4 +8,4 @@ set -e
 
 su vagrant -c files/clone.sh
 
-cd "$php_calldir"
+cd "$package_calldir"
