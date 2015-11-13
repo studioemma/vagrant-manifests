@@ -6,6 +6,6 @@ cd "$deploy_basedir"
 
 set -e
 
-su vagrant -c files/magallanes.sh
+su vagrant -c files/clone.sh
 
 cd "$deploy_calldir"
