@@ -1,1 +1,1 @@
-*/1 * * * * vagrant /var/www/website/bin/magento cron:run &
+*/1 * * * * vagrant /var/website/bin/magento cron:run &

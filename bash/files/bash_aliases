@@ -1,4 +1,4 @@
-alias w='cd /var/www/website'
+alias w='cd /var/website'
 alias rp='sudo service php5-fpm restart'
 alias ra='sudo service apache2 restart'
 alias rn='sudo service nginx restart'

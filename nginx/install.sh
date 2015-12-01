@@ -10,7 +10,7 @@ set -e
 apt-get install -y nginx
 
 # create log folder in case it does not exist
-mkdir -p /var/www/website/var/log
+mkdir -p /var/website/var/log
 
 # install config
 rm -f /etc/nginx/sites-enabled/*
@@ -19,7 +19,7 @@ install -Dm644 files/website.conf /etc/nginx/sites-enabled/
 # run nginx as vagrant user
 sed -e 's/^user.*/user vagrant;/' -i /etc/nginx/nginx.conf
 
-chown -R vagrant:vagrant /var/www/website
+chown -R vagrant:vagrant /var/website
 
 service nginx restart
 
