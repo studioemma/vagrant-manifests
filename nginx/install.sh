@@ -10,7 +10,7 @@ set -e
 apt-get install -y nginx
 
 # create log folder in case it does not exist
-mkdir -p /var/website/var/log
+mkdir -p /var/www/website/var/log
 
 # install config
 rm -f /etc/nginx/sites-enabled/*
