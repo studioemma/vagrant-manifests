@@ -1,4 +1,10 @@
 alias w='cd /var/www/website'
-alias rp='sudo service php5-fpm restart'
+
+phpversion=$(php -v | sed -rn 's/PHP ([0-9]{1}).*/\1/p')
+if [[ $phpversion -eq 7 ]]; then
+    alias rp='sudo service php7.0-fpm restart'
+else
+    alias rp='sudo service php5-fpm restart'
+fi
 alias ra='sudo service apache2 restart'
 alias rn='sudo service nginx restart'

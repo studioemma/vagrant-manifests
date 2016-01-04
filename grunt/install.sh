@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 grunt_basedir=$(dirname $(readlink -f $0))
 grunt_calldir=$(pwd)
 

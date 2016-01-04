@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 bash_basedir=$(dirname $(readlink -f $0))
 bash_calldir=$(pwd)
 

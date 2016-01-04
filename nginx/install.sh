@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 nginx_basedir=$(dirname $(readlink -f $0))
 nginx_calldir=$(pwd)
 

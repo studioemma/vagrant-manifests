@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 mysql_basedir=$(dirname $(readlink -f $0))
 mysql_calldir=$(pwd)
 

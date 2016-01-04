@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 apache_basedir=$(dirname $(readlink -f $0))
 apache_calldir=$(pwd)
 
