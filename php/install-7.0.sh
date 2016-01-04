@@ -12,7 +12,7 @@ apt-get update
 # php fpm
 apt-get install -y \
     php-cli php-fpm php-curl php-gd php-intl php-json php-mysql php-pear \
-    php-dev
+    php-dev php-mcrypt
 
 # missing form php7
 # php-mcrypt php-readline php-xsl php-xdebug
