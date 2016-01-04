@@ -13,8 +13,6 @@ apt-get install -y redis-server
 if which php > /dev/null 2>&1; then
     phpversion=$(php -v | sed -rn 's/PHP ([0-9]{1}).*/\1/p')
     if [[ $phpversion -eq 7 ]]; then
-        mkdir build
-        cd build
         git clone https://github.com/phpredis/phpredis.git
         cd phpredis
         git checkout php7
@@ -22,11 +20,17 @@ if which php > /dev/null 2>&1; then
         ./configure --prefix=/usr
         make
         make install
-        echo "extension=redis.so" > /etc/php/7.0/mods-available/redis.ini
-        phpenmod redis
+        cd ..
+        rm -rf phpredis
+        echo "extension=redis.so" > /etc/php/mods-available/redis.ini
+        (
+            cd /etc/php/7.0/cli/conf.d/
+            ln -s /etc/php/mods-available/redis.ini 20-redis.ini
+            cd /etc/php/7.0/fpm/conf.d/
+            ln -s /etc/php/mods-available/redis.ini 20-redis.ini
+        )
 
         service php7.0-fpm restart
-        cd ../..
     else
         pecl install redis
         echo "extension=redis.so" > /etc/php5/mods-available/redis.ini

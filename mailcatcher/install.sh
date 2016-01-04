@@ -17,18 +17,25 @@ install -Dm644 files/mailcatcher.upstart.conf \
 if which php > /dev/null 2>&1; then
     phpversion=$(php -v | sed -rn 's/PHP ([0-9]{1}).*/\1/p')
     if [[ $phpversion -eq 7 ]]; then
-        modpath='/etc/php/7.0'
-        enmod='phpenmod'
+        modpath='/etc/php'
         fpmservice='php7.0-fpm'
     else
         modpath='/etc/php5'
-        enmod='php5enmod'
         fpmservice='php5-fpm'
     fi
 
     echo "sendmail_path = /usr/bin/env $(which catchmail) -f magento2-devbox@studioemma.com --smtp-port 25" \
         >> $modpath/mods-available/mailcatcher.ini
-    $enmod mailcatcher
+    if [[ $phpversion -eq 7 ]]; then
+        (
+            cd /etc/php/7.0/cli/conf.d/
+            ln -s /etc/php/mods-available/mailcatcher.ini 20-mailcatcher.ini
+            cd /etc/php/7.0/fpm/conf.d/
+            ln -s /etc/php/mods-available/mailcatcher.ini 20-mailcatcher.ini
+        )
+    else
+        php5enmod mailcatcher
+    fi
 
     service $fpmservice restart
 fi

@@ -17,17 +17,39 @@ apt-get install -y \
 # missing form php7
 # php-mcrypt php-readline php-xsl php-xdebug
 
-#cat >> /etc/php5/mods-available/xdebug.ini <<-EOF
-#xdebug.remote_enable = 1
-#xdebug.remote_connect_back = 1
-#xdebug.max_nesting_level=400
-#EOF
+## build XDEBUG
+git clone https://github.com/xdebug/xdebug.git
+cd xdebug
+phpize
+./configure --prefix=/usr --enable-xdebug
+make
+cd debugclient
+./buildconf
+./configure --prefix=/usr
+make
+make install
+cd ..
+make install
+cd ..
+rm -rf xdebug
 
-install -Dm644 files/custom.ini /etc/php/7.0/mods-available/custom.ini
+cat >> /etc/php/mods-available/xdebug.ini <<-EOF
+zend_extension=xdebug.so
+xdebug.remote_enable = 1
+xdebug.remote_connect_back = 1
+xdebug.max_nesting_level=400
+EOF
 
-phpenmod mcrypt
-#phpenmod xdebug
-phpenmod custom
+install -Dm644 files/custom.ini /etc/php/mods-available/custom.ini
+
+(
+    cd /etc/php/7.0/cli/conf.d/
+    ln -s /etc/php/mods-available/xdebug.ini 20-xdebug.ini
+    ln -s /etc/php/mods-available/custom.ini 20-custom.ini
+    cd /etc/php/7.0/fpm/conf.d/
+    ln -s /etc/php/mods-available/xdebug.ini 20-xdebug.ini
+    ln -s /etc/php/mods-available/custom.ini 20-custom.ini
+)
 
 # php-fpm as vagrant user and listen on tcp
 sed -e 's/^user = .*/user = vagrant/' \
