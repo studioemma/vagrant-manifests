@@ -11,8 +11,11 @@ apt-get install -y memcached
 if which php > /dev/null 2>&1; then
     phpversion=$(php -v | sed -rn 's/PHP ([0-9]{1}).*/\1/p')
     if [[ $phpversion -eq 7 ]]; then
+        apt-get install -y pkg-config libmemcached-dev
         git clone https://github.com/php-memcached-dev/php-memcached.git
         cd php-memcached
+        # we need the php7 branch
+        git checkout php7
         phpize
         ./configure --prefix=/usr
         make
