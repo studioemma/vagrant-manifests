@@ -15,6 +15,7 @@ if which php > /dev/null 2>&1; then
     if [[ $phpversion -eq 7 ]]; then
         git clone https://github.com/phpredis/phpredis.git
         cd phpredis
+        # we need the php7 branch
         git checkout php7
         phpize
         ./configure --prefix=/usr
