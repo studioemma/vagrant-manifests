@@ -9,9 +9,6 @@ set -e
 # magento2 specific stuff
 install -Dm644 files/cron.magento2 /etc/cron.d/magento2
 
-# set env var for cli tools
-echo "export MAGE_MODE=developer" >> /home/vagrant/.bashrc
-
 if which php > /dev/null 2>&1; then
     phpversion=$(php -v | sed -rn 's/PHP ([0-9]{1}).*/\1/p')
     if [[ $phpversion -eq 7 ]]; then
