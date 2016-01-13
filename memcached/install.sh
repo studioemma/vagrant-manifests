@@ -38,6 +38,15 @@ if which php > /dev/null 2>&1; then
 
         service php5-fpm restart
     fi
+
+    # install phpredmin
+    ( cd /var/www; git clone https://github.com/hgschmie/phpmemcacheadmin.git )
+    chown vagrant:vagrant -R /var/www/phpmemcacheadmin
+    if which nginx > /dev/null 2>&1; then
+        install -Dm644 files/phpmemcacheadmin.nginx.conf \
+            /etc/nginx/sites-enabled/phpmemcacheadmin.conf
+        service nginx restart
+    fi
 fi
 
 service memcached restart
