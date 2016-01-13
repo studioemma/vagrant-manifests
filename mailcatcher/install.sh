@@ -40,6 +40,12 @@ if which php > /dev/null 2>&1; then
     service $fpmservice restart
 fi
 
+if which nginx > /dev/null 2>&1; then
+    install -Dm644 files/mailcatcher.nginx.conf \
+        /etc/nginx/sites-enabled/mailcatcher.conf
+    service nginx restart
+fi
+
 service mailcatcher restart
 
 cd "$mailcatcher_calldir"
