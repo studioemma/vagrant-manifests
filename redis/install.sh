@@ -39,6 +39,15 @@ if which php > /dev/null 2>&1; then
 
         service php5-fpm restart
     fi
+
+    # install phpredmin
+    ( cd /var/www; git clone https://github.com/sasanrose/phpredmin.git )
+    chown vagrant:vagrant -R /var/www/phpredmin
+    if which nginx > /dev/null 2>&1; then
+        install -Dm644 files/phpredmin.nginx.conf \
+            /etc/nginx/sites-enabled/phpredmin.conf
+        service nginx restart
+    fi
 fi
 
 service redis-server restart
