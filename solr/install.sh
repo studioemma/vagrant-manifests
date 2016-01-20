@@ -34,4 +34,10 @@ sed -e "s/SOLR_VERSION/$SOLR_VERSION/g" -i /etc/init/solr.conf
 
 service solr restart
 
+if which nginx > /dev/null 2>&1; then
+    install -Dm644 files/solr.nginx.conf \
+        /etc/nginx/sites-enabled/solr.conf
+    service nginx restart
+fi
+
 cd "$solr_calldir"
