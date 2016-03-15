@@ -17,7 +17,7 @@ install -Dm644 files/mailcatcher.upstart.conf \
 if which php > /dev/null 2>&1; then
     phpversion=$(php -v | sed -rn 's/PHP ([0-9]{1}).*/\1/p')
     if [[ $phpversion -eq 7 ]]; then
-        modpath='/etc/php'
+        modpath='/etc/php/7.0'
         fpmservice='php7.0-fpm'
     else
         modpath='/etc/php5'
@@ -29,9 +29,9 @@ if which php > /dev/null 2>&1; then
     if [[ $phpversion -eq 7 ]]; then
         (
             cd /etc/php/7.0/cli/conf.d/
-            ln -s /etc/php/mods-available/mailcatcher.ini 20-mailcatcher.ini
+            ln -s $modpath/mods-available/mailcatcher.ini 20-mailcatcher.ini
             cd /etc/php/7.0/fpm/conf.d/
-            ln -s /etc/php/mods-available/mailcatcher.ini 20-mailcatcher.ini
+            ln -s $modpath/mods-available/mailcatcher.ini 20-mailcatcher.ini
         )
     else
         php5enmod mailcatcher
