@@ -13,7 +13,7 @@ apt-get install -y redis-server
 if which php > /dev/null 2>&1; then
     phpversion=$(php -v | sed -rn 's/PHP ([0-9]{1}).*/\1/p')
     if [[ $phpversion -eq 7 ]]; then
-        apt-get install -y php7.0-redis
+        apt-get install -y php-redis
 
         service php7.0-fpm restart
     else
