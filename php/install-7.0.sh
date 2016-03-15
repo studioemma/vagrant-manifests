@@ -6,48 +6,29 @@ cd "$php_basedir"
 
 set -e
 
-add-apt-repository -y ppa:ondrej/php-7.0
+add-apt-repository -y ppa:ondrej/php
 apt-get update
 
 # php fpm
 apt-get install -y \
-    php-cli php-fpm php-curl php-gd php-intl php-json php-mysql php-pear \
-    php-dev php-mcrypt php-xsl
+    php7.0-cli php7.0-fpm php7.0-curl php7.0-gd php7.0-intl php7.0-json php7.0-mysql \
+    php7.0-dev php7.0-mcrypt php7.0-xml php7.0-xsl php-xdebug
 
 # missing form php7
 # php-mcrypt php-readline php-xsl php-xdebug
 
-## build XDEBUG
-git clone https://github.com/xdebug/xdebug.git
-cd xdebug
-phpize
-./configure --prefix=/usr --enable-xdebug
-make
-cd debugclient
-./buildconf
-./configure --prefix=/usr
-make
-make install
-cd ..
-make install
-cd ..
-rm -rf xdebug
-
-cat >> /etc/php/mods-available/xdebug.ini <<-EOF
-zend_extension=xdebug.so
+cat >> /etc/php/7.0/mods-available/xdebug.ini <<-EOF
 xdebug.remote_enable = 1
 xdebug.remote_connect_back = 1
 xdebug.max_nesting_level=400
 EOF
 
-install -Dm644 files/custom.ini /etc/php/mods-available/custom.ini
+install -Dm644 files/custom.ini /etc/php/7.0/mods-available/custom.ini
 
 (
     cd /etc/php/7.0/cli/conf.d/
-    ln -s /etc/php/mods-available/xdebug.ini 20-xdebug.ini
     ln -s /etc/php/mods-available/custom.ini 20-custom.ini
     cd /etc/php/7.0/fpm/conf.d/
-    ln -s /etc/php/mods-available/xdebug.ini 20-xdebug.ini
     ln -s /etc/php/mods-available/custom.ini 20-custom.ini
 )
 
