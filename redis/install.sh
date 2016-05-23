@@ -11,18 +11,11 @@ apt-get update
 apt-get install -y redis-server
 
 if which php > /dev/null 2>&1; then
-    phpversion=$(php -v | sed -rn 's/PHP ([0-9]{1}).*/\1/p')
-    if [[ $phpversion -eq 7 ]]; then
-        apt-get install -y php-redis
+    phpversion=$(php -v | sed -rn 's/PHP ([0-9]+\.[0-9]+).*/\1/p')
 
-        service php7.0-fpm restart
-    else
-        pecl install redis
-        echo "extension=redis.so" > /etc/php5/mods-available/redis.ini
-        php5enmod redis
+    apt-get install -y php${phpversion}-redis
 
-        service php5-fpm restart
-    fi
+    service php${phpversion}-fpm restart
 
     # install phpredmin
     ( cd /var/www; git clone https://github.com/sasanrose/phpredmin.git )
