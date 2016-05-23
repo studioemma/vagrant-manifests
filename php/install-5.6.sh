@@ -12,8 +12,8 @@ apt-get update
 # php fpm
 apt-get install -y \
     php5.6-cli php5.6-fpm php5.6-curl php5.6-gd php5.6-common php5.6-intl \
-    php5.6-json php5.6-mcrypt php5.6-mysql php5.6-readline php5.6-soap \
-    php5.6-xsl php5.6-xdebug php5.6-dev
+    php5.6-json php5.6-mbstring php5.6-mcrypt php5.6-mysql php5.6-readline \
+    php5.6-soap php5.6-xsl php5.6-zip php5.6-xdebug php5.6-dev
 
 cat >> /etc/php/5.6/mods-available/xdebug.ini <<-EOF
 xdebug.remote_enable = 1
