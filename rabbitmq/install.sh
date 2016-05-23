@@ -9,12 +9,10 @@ set -e
 apt-get install -y rabbitmq-server
 
 if which php > /dev/null 2>&1; then
-    apt-get install -y librabbitmq-dev
-    pecl install Amqp-1.4.0 # higher needs more recent versions of rabbitmq
-    echo "extension=amqp.so" > /etc/php5/mods-available/amqp.ini
-    php5enmod amqp
+    phpversion=$(php -v | sed -rn 's/PHP ([0-9]+\.[0-9]+).*/\1/p')
+    apt-get install -y php${phpversion}-amqp
 
-    service php5-fpm restart
+    service php${phpversion}-fpm restart
 fi
 
 rabbitmq-plugins enable rabbitmq_management
