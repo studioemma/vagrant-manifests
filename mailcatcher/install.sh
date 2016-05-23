@@ -7,9 +7,9 @@ cd "$mailcatcher_basedir"
 set -e
 
 # install mailcatcher
-apt-get install -y build-essential libsqlite3-dev ruby-dev
+apt-get install -y build-essential libsqlite3-dev ruby2.0 ruby2.0-dev
 
-gem install mailcatcher
+gem2.0 install mailcatcher
 
 install -Dm644 files/mailcatcher.upstart.conf \
     /etc/init/mailcatcher.conf
