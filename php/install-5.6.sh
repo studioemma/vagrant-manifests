@@ -11,17 +11,17 @@ apt-get update
 
 # php fpm
 apt-get install -y \
-    php7.0-cli php7.0-fpm php7.0-curl php7.0-gd php7.0-common php7.0-intl \
-    php7.0-json php7.0-mcrypt php7.0-mysql php7.0-readline php7.0-soap \
-    php7.0-xsl php7.0-xdebug php7.0-dev
+    php5.6-cli php5.6-fpm php5.6-curl php5.6-gd php5.6-common php5.6-intl \
+    php5.6-json php5.6-mcrypt php5.6-mysql php5.6-readline php5.6-soap \
+    php5.6-xsl php5.6-xdebug php5.6-dev
 
-cat >> /etc/php/7.0/mods-available/xdebug.ini <<-EOF
+cat >> /etc/php/5.6/mods-available/xdebug.ini <<-EOF
 xdebug.remote_enable = 1
 xdebug.remote_connect_back = 1
 xdebug.max_nesting_level=400
 EOF
 
-install -Dm644 files/custom.ini /etc/php/7.0/mods-available/custom.ini
+install -Dm644 files/custom.ini /etc/php/5.6/mods-available/custom.ini
 
 phpenmod mcrypt
 phpenmod xdebug
@@ -33,9 +33,9 @@ sed -e 's/^user = .*/user = vagrant/' \
     -e 's/^listen.owner = .*/listen.owner = vagrant/' \
     -e 's/^listen.group = .*/listen.group = vagrant/' \
     -e 's/^listen = .*/listen = 127.0.0.1:9000/' \
-    -i /etc/php/7.0/fpm/pool.d/www.conf
+    -i /etc/php/5.6/fpm/pool.d/www.conf
 
-service php7.0-fpm restart
+service php5.6-fpm restart
 
 # install composer
 curl -sS https://getcomposer.org/installer | php
