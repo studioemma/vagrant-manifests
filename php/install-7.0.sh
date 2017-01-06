@@ -18,7 +18,7 @@ apt-get install -y \
 cat >> /etc/php/7.0/mods-available/xdebug.ini <<-EOF
 xdebug.remote_enable = 1
 xdebug.remote_connect_back = 1
-xdebug.max_nesting_level=400
+xdebug.max_nesting_level=500
 EOF
 
 install -Dm644 files/custom.ini /etc/php/7.0/mods-available/custom.ini
@@ -35,11 +35,11 @@ sed -e 's/^user = .*/user = vagrant/' \
     -e 's/^listen = .*/listen = 127.0.0.1:9000/' \
     -i /etc/php/7.0/fpm/pool.d/www.conf
 
-service php7.0-fpm restart
+systemctl restart php7.0-fpm
 
 # install composer
-curl -sS https://getcomposer.org/installer | php
-mv composer.phar /usr/local/bin/composer
+curl -sS https://getcomposer.org/installer | \
+    php -- --install-dir=/usr/local/bin --filename=composer
 chmod +x /usr/local/bin/composer
 
 # composer cronjob
