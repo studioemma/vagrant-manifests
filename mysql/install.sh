@@ -18,6 +18,7 @@ echo "[mysqld]" > /etc/mysql/conf.d/se.cnf
 echo "sql_mode=NO_ENGINE_SUBSTITUTION" >> /etc/mysql/conf.d/se.cnf
 echo "performance_schema = 0" >> /etc/mysql/conf.d/se.cnf
 echo "bind-address = 0.0.0.0" >> /etc/mysql/conf.d/se.cnf
+echo "innodb_doublewrite = 0" >> /etc/mysql/conf.d/se.cnf # increase perf in dev
 
 systemctl stop mysql
 sleep 2
