@@ -1,6 +1,6 @@
 #!/bin/bash
 
-if [[ "vagrant" == "$(whoami)" ]]; then
+if [[ "ubuntu" == "$(whoami)" ]]; then
     cd "$HOME"
 
     composer global require --dev andres-montanez/magallanes:~1.0

@@ -1,6 +1,6 @@
 #!/bin/bash
 
-if [[ "vagrant" == "$(whoami)" ]]; then
+if [[ "ubuntu" == "$(whoami)" ]]; then
     cd "$HOME"
     ssh-keyscan -p7999 stash.studioemma.com >> "$HOME/.ssh/known_hosts"
 
