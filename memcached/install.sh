@@ -11,9 +11,9 @@ apt-get install -y memcached
 if which php > /dev/null 2>&1; then
     phpversion=$(php -v | sed -rn 's/PHP ([0-9]+\.[0-9]+).*/\1/p')
 
-    apt-get install -y php${phpversion}-memcached
+    apt-get install -y php-memcached
 
-    service php${phpversion}-fpm restart
+    systemctl restart php${phpversion}-fpm
 
     # install memcacheadmin
     ( cd /var/www; git clone https://github.com/hgschmie/phpmemcacheadmin.git )
@@ -21,10 +21,10 @@ if which php > /dev/null 2>&1; then
     if which nginx > /dev/null 2>&1; then
         install -Dm644 files/phpmemcacheadmin.nginx.conf \
             /etc/nginx/sites-enabled/phpmemcacheadmin.conf
-        service nginx restart
+        systemctl restart nginx
     fi
 fi
 
-service memcached restart
+systemctl restart memcached
 
 cd "$memcached_calldir"
