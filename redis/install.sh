@@ -13,9 +13,9 @@ apt-get install -y redis-server
 if which php > /dev/null 2>&1; then
     phpversion=$(php -v | sed -rn 's/PHP ([0-9]+\.[0-9]+).*/\1/p')
 
-    apt-get install -y php${phpversion}-redis
+    apt-get install -y php-redis
 
-    service php${phpversion}-fpm restart
+    systemctl restart php${phpversion}-fpm
 
     # install phpredmin
     ( cd /var/www; git clone https://github.com/sasanrose/phpredmin.git )
@@ -23,10 +23,10 @@ if which php > /dev/null 2>&1; then
     if which nginx > /dev/null 2>&1; then
         install -Dm644 files/phpredmin.nginx.conf \
             /etc/nginx/sites-enabled/phpredmin.conf
-        service nginx restart
+        systemctl restart nginx
     fi
 fi
 
-service redis-server restart
+systemctl restart redis-server
 
 cd "$redis_calldir"
