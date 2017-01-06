@@ -7,12 +7,12 @@ cd "$mailcatcher_basedir"
 set -e
 
 # install mailcatcher
-apt-get install -y build-essential libsqlite3-dev ruby2.0 ruby2.0-dev
+apt-get install -y build-essential libsqlite3-dev ruby-dev
 
-gem2.0 install mailcatcher
+gem install mailcatcher
 
-install -Dm644 files/mailcatcher.upstart.conf \
-    /etc/init/mailcatcher.conf
+install -Dm644 files/mailcatcher.systemd.service \
+    /etc/systemd/system/mailcatcher.service
 
 if which php > /dev/null 2>&1; then
     phpversion=$(php -v | sed -rn 's/PHP ([0-9]+\.[0-9]+).*/\1/p')
@@ -20,15 +20,15 @@ if which php > /dev/null 2>&1; then
         >> /etc/php/$phpversion/mods-available/mailcatcher.ini
     phpenmod mailcatcher
 
-    service php${phpversion}-fpm restart
+    systemctl restart php${phpversion}-fpm
 fi
 
 if which nginx > /dev/null 2>&1; then
     install -Dm644 files/mailcatcher.nginx.conf \
         /etc/nginx/sites-enabled/mailcatcher.conf
-    service nginx restart
+    systemctl restart nginx
 fi
 
-service mailcatcher restart
+systemctl restart mailcatcher
 
 cd "$mailcatcher_calldir"
