@@ -1,4 +1,7 @@
 #!/bin/bash
+####
+# DEPRECATED IN FAVOUR OF ELASTICSEARCH
+####
 solr_basedir=$(dirname $(readlink -f $0))
 solr_calldir=$(pwd)
 
