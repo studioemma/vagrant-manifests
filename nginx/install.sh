@@ -19,6 +19,6 @@ install -Dm644 files/website.conf /etc/nginx/sites-enabled/00_website.conf
 # run nginx as vagrant user
 sed -e 's/^user.*/user vagrant;/' -i /etc/nginx/nginx.conf
 
-service nginx restart
+systemctl restart nginx
 
 cd "$nginx_calldir"
