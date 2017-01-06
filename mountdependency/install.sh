@@ -45,11 +45,15 @@ cat >> "$outfile" <<'EOB'
         sleep 1
     fi
 done
+
+# create log folder in case it does not exist
+mkdir -p /var/www/website/var/log
+
 EOB
 
 for service in "${services[@]}"; do
 cat >> "$outfile" <<EOB
-service $service restart
+systemctl restart $service
 EOB
 done
 
