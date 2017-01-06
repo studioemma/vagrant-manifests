@@ -1,6 +1,6 @@
 # vim: ft=sh:
 phpversion=$(php -v | sed -rn 's/PHP ([0-9]+\.[0-9]+).*/\1/p')
 
-alias w='cd /var/www/website'
+alias www='cd /var/www/website'
 alias rp="sudo service php${phpversion}-fpm restart"
 alias rn='sudo service nginx restart'
