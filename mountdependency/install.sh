@@ -49,13 +49,9 @@ done
 # create log folder in case it does not exist
 mkdir -p /var/www/website/var/log
 
-EOB
+systemctl restart ${services[@]}
 
-for service in "${services[@]}"; do
-cat >> "$outfile" <<EOB
-systemctl restart $service
 EOB
-done
 
 chmod +x "$outfile"
 
