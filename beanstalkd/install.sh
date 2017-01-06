@@ -15,10 +15,10 @@ if which php > /dev/null 2>&1; then
     if which nginx > /dev/null 2>&1; then
         install -Dm644 files/phpbeanstalkdadmin.nginx.conf \
             /etc/nginx/sites-enabled/phpbeanstalkdadmin.conf
-        service nginx restart
+        systemctl restart nginx
     fi
 fi
 
-service beanstalkd restart
+systemctl restart beanstalkd
 
 cd "$beanstalkd_calldir"
