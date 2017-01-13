@@ -4,7 +4,7 @@ After=network.target
 
 [Service]
 Type=simple
-ExecStart=/usr/bin/mailcatcher --http-ip="0.0.0.0" --http-port=1080 --smtp-ip="0.0.0.0" --smtp-port=25 --foreground
+ExecStart=/usr/local/bin/mailcatcher --http-ip="0.0.0.0" --http-port=1080 --smtp-ip="0.0.0.0" --smtp-port=25 --foreground
 
 [Install]
 WantedBy=multi-user.target
