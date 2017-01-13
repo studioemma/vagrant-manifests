@@ -20,7 +20,4 @@ apt-get install -y vim htop curl git-core ant python-software-properties
 sed -e 's/\(.*AcceptEnv.*\)/# \1/' -i /etc/ssh/sshd_config
 systemctl restart ssh
 
-# change ubuntu password
-echo "ubuntu:ubuntu" | chpasswd
-
 cd "$init_calldir"
