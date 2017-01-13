@@ -14,7 +14,7 @@ systemctl restart ssh
 addinsecurekey=0
 if [[ ! -e "/home/ubuntu/.ssh/authorized_keys" ]]; then
     addinsecurekey=1
-elif [[ "0" == "$(cat /home/ubuntu.ssh/authorized_keys | wc -l)" ]]; then
+elif [[ "0" == "$(cat /home/ubuntu/.ssh/authorized_keys | wc -l)" ]]; then
     addinsecurekey=1
 fi
 
