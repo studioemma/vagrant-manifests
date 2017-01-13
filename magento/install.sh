@@ -15,4 +15,8 @@ if which php > /dev/null 2>&1; then
     service php${phpversion}-fpm restart
 fi
 
+# install magerun
+wget https://files.magerun.net/n98-magerun2-latest.phar -O /usr/local/bin/magerun
+chomd +x /usr/local/bin/magerun
+
 cd "$magento_calldir"
