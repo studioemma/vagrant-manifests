@@ -17,6 +17,6 @@ fi
 
 # install magerun
 wget https://files.magerun.net/n98-magerun2-latest.phar -O /usr/local/bin/magerun
-chomd +x /usr/local/bin/magerun
+chmod +x /usr/local/bin/magerun
 
 cd "$magento_calldir"
