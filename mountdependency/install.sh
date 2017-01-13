@@ -40,8 +40,8 @@ cat >> "$outfile" <<EOB
 EOB
 done
 
-cat >> "$outfile" <<'EOB'
-    if [[ $mounts -eq 1 ]]; then
+cat >> "$outfile" <<EOB
+    if [[ \$mounts -eq 1 ]]; then
         sleep 1
     fi
 done
