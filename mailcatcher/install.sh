@@ -29,6 +29,7 @@ if which nginx > /dev/null 2>&1; then
     systemctl restart nginx
 fi
 
+systemctl enable mailcatcher
 systemctl restart mailcatcher
 
 cd "$mailcatcher_calldir"
