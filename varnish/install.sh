@@ -13,11 +13,4 @@ install -m644 files/default.vcl /etc/varnish/default.vcl
 
 systemctl restart varnish
 
-if which nginx > /dev/null 2>&1; then
-    install -Dm644 files/varnish.nginx.conf \
-        /etc/nginx/sites-enabled/varnish.conf
-    systemctl restart nginx
-fi
-
-
 cd "$varnish_calldir"
