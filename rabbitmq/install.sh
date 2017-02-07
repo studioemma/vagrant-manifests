@@ -10,7 +10,7 @@ apt-get install -y rabbitmq-server
 
 if which php > /dev/null 2>&1; then
     phpversion=$(php -v | sed -rn 's/PHP ([0-9]+\.[0-9]+).*/\1/p')
-    apt-get install -y php-amqp
+    apt-get install -y php-amqp php${phpversion}-bcmath
 
     systemctl restart php${phpversion}-fpm
 fi
