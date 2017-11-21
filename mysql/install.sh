@@ -24,6 +24,8 @@ systemctl stop mysql
 sleep 2
 systemctl start mysql
 
+echo "127.0.0.1 mysql" >> /etc/hosts
+
 mysql -uroot -ptoor -e \
     "grant all on *.* to 'root'@'%' identified by 'toor'; flush privileges;"
 

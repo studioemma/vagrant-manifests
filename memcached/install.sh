@@ -27,4 +27,6 @@ fi
 
 systemctl restart memcached
 
+echo "127.0.0.1 memcached" >> /etc/hosts
+
 cd "$memcached_calldir"

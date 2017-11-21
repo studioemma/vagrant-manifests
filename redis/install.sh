@@ -29,4 +29,6 @@ fi
 
 systemctl restart redis-server
 
+echo "127.0.0.1 redis" >> /etc/hosts
+
 cd "$redis_calldir"
