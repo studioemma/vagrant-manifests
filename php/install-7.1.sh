@@ -36,7 +36,7 @@ sed -e 's/^user = .*/user = ubuntu/' \
     -e 's/^group = .*/group = ubuntu/' \
     -e 's/^listen.owner = .*/listen.owner = ubuntu/' \
     -e 's/^listen.group = .*/listen.group = ubuntu/' \
-    -e 's/^listen = .*/listen = 127.1.0.1:9000/' \
+    -e 's/^listen = .*/listen = 127.0.0.1:9000/' \
     -i /etc/php/7.1/fpm/pool.d/www.conf
 
 systemctl restart php7.1-fpm
