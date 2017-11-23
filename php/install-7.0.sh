@@ -22,10 +22,12 @@ xdebug.max_nesting_level=500
 EOF
 
 install -Dm644 files/custom.ini /etc/php/7.0/mods-available/custom.ini
+install -Dm644 files/opcache_settings.ini /etc/php/7.0/mods-available/opcache_settings.ini
 
 phpenmod mcrypt
 phpenmod xdebug
 phpenmod custom
+phpenmod opcache_settings
 
 # php-fpm as ubuntu user and listen on tcp
 sed -e 's/^user = .*/user = ubuntu/' \
