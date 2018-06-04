@@ -17,7 +17,7 @@ if which php > /dev/null 2>&1; then
 
     # install memcacheadmin
     ( cd /var/www; git clone https://github.com/hgschmie/phpmemcacheadmin.git )
-    chown ubuntu:ubuntu -R /var/www/phpmemcacheadmin
+    chown vagrant:vagrant -R /var/www/phpmemcacheadmin
     if which nginx > /dev/null 2>&1; then
         install -Dm644 files/phpmemcacheadmin.nginx.conf \
             /etc/nginx/sites-enabled/phpmemcacheadmin.conf
