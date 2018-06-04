@@ -17,7 +17,7 @@ apt-get update
 apt-get install -y \
     php7.1-cli php7.1-fpm php7.1-curl php7.1-gd php7.1-common php7.1-intl \
     php7.1-json php7.1-mbstring php7.1-mcrypt php7.1-mysql php7.1-readline \
-    php7.1-soap php7.1-xsl php7.1-zip php7.1-xdebug php7.1-dev
+    php7.1-soap php7.1-xsl php7.1-zip php7.1-xdebug php7.1-dev php7.1-bcmath
 
 cat >> /etc/php/7.1/mods-available/xdebug.ini <<-EOF
 xdebug.remote_enable = 1
