@@ -33,11 +33,11 @@ phpenmod xdebug
 phpenmod custom
 phpenmod opcache_settings
 
-# php-fpm as ubuntu user and listen on tcp
-sed -e 's/^user = .*/user = ubuntu/' \
-    -e 's/^group = .*/group = ubuntu/' \
-    -e 's/^listen.owner = .*/listen.owner = ubuntu/' \
-    -e 's/^listen.group = .*/listen.group = ubuntu/' \
+# php-fpm as vagrant user and listen on tcp
+sed -e 's/^user = .*/user = vagrant/' \
+    -e 's/^group = .*/group = vagrant/' \
+    -e 's/^listen.owner = .*/listen.owner = vagrant/' \
+    -e 's/^listen.group = .*/listen.group = vagrant/' \
     -e 's/^listen = .*/listen = 127.0.0.1:9000/' \
     -i /etc/php/7.1/fpm/pool.d/www.conf
 
