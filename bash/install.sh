@@ -20,11 +20,11 @@ echo 'SCMENABLED=0' >> /etc/bashrc.config
 echo 'SCMDIRTY=0' >> /etc/bashrc.config
 
 tail -n 19 /etc/skel/.bashrc | head -n 8 > /root/.bashrc
-tail -n 19 /etc/skel/.bashrc | head -n 8 > /home/ubuntu/.bashrc
+tail -n 19 /etc/skel/.bashrc | head -n 8 > /home/vagrant/.bashrc
 
 install -Dm644 files/bash_aliases \
-    /home/ubuntu/.bash_aliases
-chown --reference /home/ubuntu /home/ubuntu/.bash_aliases
+    /home/vagrant/.bash_aliases
+chown --reference /home/vagrant /home/vagrant/.bash_aliases
 
 
 cd "$bash_calldir"
