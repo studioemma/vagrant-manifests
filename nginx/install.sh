@@ -16,8 +16,8 @@ mkdir -p /var/www/website/var/log
 rm -f /etc/nginx/sites-enabled/*
 install -Dm644 files/website.conf /etc/nginx/sites-enabled/00_website.conf
 
-# run nginx as ubuntu user
-sed -e 's/^user.*/user ubuntu;/' -i /etc/nginx/nginx.conf
+# run nginx as vagrant user
+sed -e 's/^user.*/user vagrant;/' -i /etc/nginx/nginx.conf
 
 systemctl restart nginx
 
