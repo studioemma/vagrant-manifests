@@ -19,7 +19,7 @@ if which php > /dev/null 2>&1; then
 
     # install phpredmin
     ( cd /var/www; git clone https://github.com/sasanrose/phpredmin.git )
-    chown ubuntu:ubuntu -R /var/www/phpredmin
+    chown vagrant:vagrant -R /var/www/phpredmin
     if which nginx > /dev/null 2>&1; then
         install -Dm644 files/phpredmin.nginx.conf \
             /etc/nginx/sites-enabled/phpredmin.conf
