@@ -18,6 +18,7 @@ fi
 rabbitmq-plugins enable rabbitmq_management
 
 systemctl restart rabbitmq-server
+systemctl enable rabbitmq-server
 
 if which nginx > /dev/null 2>&1; then
     install -Dm644 files/rabbitmq.nginx.conf \

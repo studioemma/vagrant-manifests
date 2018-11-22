@@ -28,6 +28,7 @@ if which php > /dev/null 2>&1; then
 fi
 
 systemctl restart redis-server
+systemctl enable redis-server
 
 echo "127.0.0.1 redis" >> /etc/hosts
 

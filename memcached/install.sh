@@ -26,6 +26,7 @@ if which php > /dev/null 2>&1; then
 fi
 
 systemctl restart memcached
+systemctl enable memcached
 
 echo "127.0.0.1 memcached" >> /etc/hosts
 

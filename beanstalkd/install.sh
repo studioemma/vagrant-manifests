@@ -20,5 +20,6 @@ if which php > /dev/null 2>&1; then
 fi
 
 systemctl restart beanstalkd
+systemctl enable beanstalkd
 
 cd "$beanstalkd_calldir"

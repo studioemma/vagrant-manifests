@@ -12,5 +12,6 @@ rm /etc/varnish/default.vcl
 install -m644 files/default.vcl /etc/varnish/default.vcl
 
 systemctl restart varnish
+systemctl enable varnish
 
 cd "$varnish_calldir"
