@@ -11,6 +11,10 @@ echo "deb https://artifacts.elastic.co/packages/6.x/apt stable main" > /etc/apt/
 apt-get update
 apt-get install -y elasticsearch python3-pip
 
+sed -e 's/^-Xms.*/-Xms1g/' \
+    -e 's/^-Xmx.*/-Xmx1g/' \
+    -i /etc/elasticsearch/jvm.options
+
 systemctl enable elasticsearch.service
 systemctl restart elasticsearch.service
 
