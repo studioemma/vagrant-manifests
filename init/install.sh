@@ -11,6 +11,7 @@ apt-get update
 
 # set timezone
 echo "Europe/Brussels" > /etc/timezone
+timedatectl set-timezone Europe/Brussels
 dpkg-reconfigure --frontend noninteractive tzdata 2>&1
 
 # default packages
