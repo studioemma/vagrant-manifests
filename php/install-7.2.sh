@@ -35,6 +35,9 @@ sed -e 's/^user = .*/user = vagrant/' \
     -e 's/^listen.owner = .*/listen.owner = vagrant/' \
     -e 's/^listen.group = .*/listen.group = vagrant/' \
     -e 's/^listen = .*/listen = 127.0.0.1:9000/' \
+    -e 's/^\(pm =\).*/\1 static/' \
+    -e 's/^\(pm.max_children =\).*/\1 10/' \
+    -e 's/^;\(pm.max_requests\)/\1/' \
     -i /etc/php/7.2/fpm/pool.d/www.conf
 
 systemctl restart php7.2-fpm
