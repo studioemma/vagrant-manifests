@@ -1,0 +1,12 @@
+[Unit]
+Description=MailHog Service
+After=network.service
+
+[Service]
+Type=simple
+ExecStart=/usr/local/bin/mailhog -ui-bind-addr :1080 -api-bind-addr :1080
+Restart=always
+
+
+[Install]
+WantedBy=multi-user.target
